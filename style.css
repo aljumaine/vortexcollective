@@ -1,0 +1,207 @@
+/* setting up some default layouts and colors with CSS variables */
+:root {
+    --page-back: #FFEED9;
+    --page-fore: #FF4242;
+    --page-font-size: 24px;
+  
+    --section-pad: 120px;
+    --section-border: #f69d9d;
+    --section-height: 100vh;
+  
+    --form-width: 240px;
+    --form-back: #181711;
+    --form-fore: #ec9191;
+    --form-border: #000000;
+  }
+  
+  /* dark mode css variables! */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --page-back: #000000;
+      --page-fore: #ffffff;
+  
+      --section-border: #000000;
+  
+      --form-back: #ffffff;
+      --form-fore: #000000;
+      --form-border: #dddddd;
+    }
+  }
+  
+  /* mobile friendly layout */
+  @media (max-width: 640px) {
+    :root {
+      --page-font-size: 16px;
+  
+      --section-pad: 24px;
+      --section-height: 100vw;
+  
+      --form-width: 200px;
+    }
+  }
+  
+  /*CSS for the fadding in of the form*/
+  @keyframes fadein {
+    0% {
+      visibility: hidden;
+      opacity: 0;
+      transform: translate(0, 22px);
+    }
+    100% {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+  }
+  
+  body {
+    font-family: "Inter var";
+    font-size: var(--page-font-size);
+    font-variation-settings: "wght" 300;
+    line-height: 1.20;
+  
+    background-color: var(--page-back);
+    color: var(--page-fore);
+  }
+  
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 24px;
+    z-index: 1;
+  
+    /* invert text */
+    color: #ffffff;
+    mix-blend-mode: difference;
+  }
+  
+  h1 {
+    font-variation-settings: "wght" 600;
+    padding-left: 20;
+    padding-right: 20;
+  }
+
+  h2 {
+    border: 3px solid black;
+    font-variation-settings: "wght" 300;
+    background-color: rgb(222, 236, 152);
+    padding-top: 50px;
+    padding-right: 30px;
+    padding-bottom: 50px;
+    padding-left: 80px;
+    color: Black;
+  }
+  
+  section {
+    background: var(--page-back);
+    padding: var(--section-pad);
+    height: var(--section-height);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid var(--section-border);
+  }
+  
+  section img {
+    object-fit: contain;
+    max-width: 100%;
+    max-height: 100%;
+    border: 5px solid rgb(4, 3, 3);
+  }
+  
+  form {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    max-width: var(--form-width);
+  
+    background: var(--form-back);
+    color: var(--form-fore);
+    padding: 24px;
+  
+    display: grid;
+    grid-gap: 16px 8px;
+    grid-template-areas: "label label" "input eth" "button button";
+    grid-template-columns: 1fr auto;
+    align-items: center;
+  
+    display: none;
+    animation: fadein 0.4s 0.8s ease-in-out both;
+  }
+  
+  form.has-eth { 
+    display: grid;
+    animation: fadein 0.4s 0.8s ease-in-out both;
+  }
+  
+  form label {
+    grid-area: label;
+  
+    display: block;
+    font-size: 16px;
+  }
+  
+  form input {
+    grid-area: input;
+  
+    appearance: none;
+    width: 100%;
+    border: none;
+    padding: 8px;
+  
+    font-variation-settings: "wght" 600;
+    text-align: right;
+  
+    background: var(--form-back);
+    color: var(--form-fore);
+    border: 1px solid var(--form-border);
+    transition: border-color 0.2s ease-in-out;
+  }
+  
+  form input:focus {
+    border: 1px solid var(--form-fore);
+    outline: none;
+  }
+  
+  form span {
+    grid-area: eth;
+  }
+  
+  form button {
+    grid-area: button;
+    appearance: none;
+    border: none;
+    background: var(--form-fore);
+    color: var(--form-back);
+    font: inherit;
+    padding: 8px;
+    font-size: 16px;
+  }
+  
+  @supports (scroll-snap-type: y mandatory) {
+    @media (min-width: 640px) {
+      html {
+        scroll-snap-type: y mandatory;
+      }
+    
+      section {
+        scroll-snap-align: start;
+      }
+    }
+  }
+
+  .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: red;
+    color: white;
+    text-align: center;
+
+    }
+
+    canvas {
+        background-color: rgb(255, 255, 255);
+    }
