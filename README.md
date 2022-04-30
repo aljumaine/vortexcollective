@@ -31,3 +31,11 @@ The second largest change in scope would be altering the project. I realized tha
 **Challenges: **
 
 One of the most difficult challenges for me was understanding how to set up smart contracts correctly and then connecting with thme via solidity. 
+
+**
+How it works: **
+This project was set up on the Etherium block chain as the options for setting up NFt's and smart contracts could be used in the future for other prpjects and intiatives. 
+
+When we click Donate on the form, it will set up a transaction to send funds to a specific account number on the block chain. This was completed using Javascript which is just an interaction layer above the CSS. 
+
+The main feature of this site is the form which is able to send funds using Javascript to a wallet on the Etherium block chain. When the user enters in a value and clicks ''Donate'' there is a javascript event which prevents the default function of sending  the user to the next page like it woudl usually. 
