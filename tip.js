@@ -6,21 +6,22 @@ const form = document.querySelector("form")
 
 // need to make an async function that needs an amount in ETH to be passed for donations.//
 const send = async function (amount) {
+ 
   // get a list of accounts from metamask
   const accounts = await window.ethereum.request({ method: "eth_requestAccounts" })
 
-  // now need to turn the amount into the base unit of currency, wei
+  // now need to turn the amount into the base unit of currency,
   const wei = web3.utils.toWei(amount, "ether")
   
-  // if at least one account
+  // if at least one account is connected to a wallet then allow them to donate
   if (accounts.length > 0) {
     // set up a transaction from logged in account to transfer funds from the signed in wallet
-    // to a set amount, with the value in hex format
+    // to a set amount, with the value in hex format.
     window.ethereum.request({ 
       method: "eth_sendTransaction",
       params: [{
         from: accounts[0],
-        to: "enter in the wallet address here where the funds can be sent",
+        to: "enter in the wallet address here where the funds can be sent. Have removed as this is a prototype.",
         value: web3.utils.toHex(wei)
       }]
     })
@@ -34,10 +35,10 @@ if (window.ethereum) {
 
 // Now need to set up a listener for the form submission
 form.addEventListener("submit", function (event) {
-  // stop the default thing happening, e.g. going to the next page
+
   event.preventDefault()
 
-  // if a wallet installed
+  // if a wallet installed via a browser add on
   if (window.ethereum) {
     // get the input and pass to send function
     const input = form.querySelector("input")
